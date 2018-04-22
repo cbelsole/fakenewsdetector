@@ -1,8 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import React from "react";
+import { render } from "react-dom";
+import { Provider } from "react-redux";
+import { Router, Route } from "react-router";
+import store, { history } from "./store";
+import Home from "./containers/home";
+import "./index.css";
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+render(
+  <Provider store={store}>
+    <Router history={history}>
+      <Route exact path="/" component={Home} />
+    </Router>
+  </Provider>,
+  document.querySelector("#root")
+);

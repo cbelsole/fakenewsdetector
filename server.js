@@ -28,7 +28,7 @@ app.get("/api/hello", (req, res) => {
   res.send({ express: "Hello From Express" });
 });
 
-app.post("/api/article", (req, res) => {
+app.post("/api/articles", (req, res) => {
   res.send(testRes);
 });
 
