@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import logo from "../../logo.svg";
 import "./index.css";
 import { createArticle } from "../../modules/article";
+import Spinner from "../spinner";
 
 class Home extends Component {
   constructor(props) {
@@ -26,7 +27,9 @@ class Home extends Component {
     this.props.createArticle(url);
   }
 
-  renderStats(article) {
+  renderStats() {
+    const { article } = this.props;
+
     return (
       <div>
         <h2>Here's what we found</h2>
@@ -64,7 +67,8 @@ class Home extends Component {
             <button type="submit">Submit </button>
           </form>
         </div>
-        {this.props.article && this.renderStats(this.props.article)}
+        {this.props.article && this.renderStats()}
+        {this.props.articleLoading && <Spinner />}
       </div>
     );
   }
@@ -72,7 +76,8 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    article: state.article.article
+    article: state.article.article,
+    articleLoading: state.article.loading
   };
 };
 
