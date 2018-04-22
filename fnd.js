@@ -57,9 +57,11 @@ const puppeteer = require('puppeteer');
       ignored: [],
     })
   }, "a");
-  console.log("Good links")
-  console.log(links.good.join('\n'));
-  console.log("\n")
+  const json = JSON.stringify(links)
+  console.log(json)
+  // console.log("Good links")
+  // console.log(links.good.join('\n'));
+  // console.log("\n")
 
   // console.log("debug")
   // console.log(links.debug.join('\n'));
