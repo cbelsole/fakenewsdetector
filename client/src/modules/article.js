@@ -67,14 +67,16 @@ export const createArticle = url => {
             }
           }
         );
+
         const json = await res.json();
         dispatch(articleLoading(false));
-        console.log(json);
+
         if (res.status !== 200) {
           dispatch(articleError(json.error));
         } else {
           dispatch(createArticleSuccess(json));
         }
+
         return json;
       } catch (error) {
         dispatch(articleLoading(false));
