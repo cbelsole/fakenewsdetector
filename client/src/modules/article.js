@@ -1,10 +1,12 @@
 const ARTICLE = "@@ARTICLE";
 const ARTICLE_CREATE_SUCCESS = `${ARTICLE}/CREATE_SUCCESS`;
 const ARTICLE_LOADING = `${ARTICLE}/LOADING`;
+const ARTICLE_ERROR = `${ARTICLE}/ERROR`;
 
 const initialState = {
   article: null,
-  loading: false
+  loading: false,
+  error: null
 };
 
 export default (state = initialState, action) => {
@@ -18,6 +20,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: action.payload
+      };
+    case ARTICLE_ERROR:
+      return {
+        ...state,
+        error: action.payload
       };
     default:
       return state;
@@ -34,27 +41,46 @@ const articleLoading = loading => ({
   payload: loading
 });
 
+const articleError = error => ({
+  type: ARTICLE_ERROR,
+  payload: error
+});
+
+const clearArticleError = error => ({
+  type: ARTICLE_ERROR,
+  payload: null
+});
+
 export const createArticle = url => {
   return dispatch => {
+    dispatch(clearArticleError());
     dispatch(articleLoading(true));
 
-    return setTimeout(() => {
-      fetch(
-        "/api/articles",
-        { body: { url }, method: "POST" },
-        {
-          headers: {
-            "content-type": "application/json"
+    return setTimeout(async () => {
+      try {
+        const res = await fetch(
+          "/api/articles",
+          { body: { url }, method: "POST" },
+          {
+            headers: {
+              "content-type": "application/json"
+            }
           }
-        }
-      )
-        .then(res => res.json())
-        .then(json => {
-          console.log(json);
-          dispatch(articleLoading(false));
+        );
+        const json = await res.json();
+        dispatch(articleLoading(false));
+        console.log(json);
+        if (res.status !== 200) {
+          dispatch(articleError(json.error));
+        } else {
           dispatch(createArticleSuccess(json));
-          return json;
-        });
+        }
+        return json;
+      } catch (error) {
+        dispatch(articleLoading(false));
+        dispatch(articleError(error));
+        return error;
+      }
     }, 1000);
   };
 };

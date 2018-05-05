@@ -11,6 +11,7 @@ class Home extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderStats = this.renderStats.bind(this);
+    this.renderError = this.renderError.bind(this);
   }
   state = {
     url: ""
@@ -34,22 +35,40 @@ class Home extends Component {
       <div>
         <h2>Here's what we found</h2>
         <p>
+          This article was written by:{" "}
+          <strong>
+            <a href="https://www.google.com/search?q=Faith+Karimi">
+              A journalist
+            </a>
+          </strong>
+        </p>
+        <p>
           This website belongs to the corporation:{" "}
           <strong>Turner Broadcasting</strong>{" "}
         </p>
         <p>Here are a few sources we found in the article:</p>
-        <ul>
-          {article.good.map((url, i) => {
-            return (
-              <li key={i}>
-                {url} <button>Not a source</button>
-              </li>
-            );
-          })}
-        </ul>
+        {article.good.map((url, i) => {
+          return (
+            <p key={i}>
+              <a href={url}>{url}</a> <button>Not a source</button>
+            </p>
+          );
+        })}
       </div>
     );
   }
+
+  renderError() {
+    const { error } = this.props;
+
+    return (
+      <div>
+        <h2>Sorry, it looks like we encountered an error.</h2>
+        {/* <p>{error}</p> */}
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="App">
@@ -69,6 +88,7 @@ class Home extends Component {
         </div>
         {this.props.article && this.renderStats()}
         {this.props.articleLoading && <Spinner />}
+        {this.props.error && this.renderError()}
       </div>
     );
   }
@@ -77,7 +97,8 @@ class Home extends Component {
 const mapStateToProps = state => {
   return {
     article: state.article.article,
-    articleLoading: state.article.loading
+    articleLoading: state.article.loading,
+    error: state.article.error
   };
 };
 
