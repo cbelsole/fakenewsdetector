@@ -28,5 +28,6 @@ export default {
     "joinhoney.com"
   ],
   ignore: ["instagram.com", "yahoo.com", "twitter.com", "facebook.com"],
-  articleSelector: 'div[itemprop="articleBody"] a'
+  articleSelector: 'div[itemprop="articleBody"] a',
+  authorSelector: ".metadata__byline__author a"
 };

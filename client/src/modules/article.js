@@ -53,6 +53,7 @@ const clearArticleError = error => ({
 
 export const createArticle = url => {
   return dispatch => {
+    dispatch(createArticleSuccess(null));
     dispatch(clearArticleError());
     dispatch(articleLoading(true));
 

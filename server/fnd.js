@@ -4,20 +4,21 @@ export default async site => {
   const browser = await puppeteer.launch({
     headless: true /*, dumpio: true */
   });
+
   try {
     const page = await browser.newPage();
-    console.log("created a new page");
+
     await page.goto(
       "https://www.cnn.com/2018/04/22/entertainment/avicii-death-foul-play-ruled-out/index.html",
       { waitUntil: "networkidle2" }
     );
-    console.log("going to a new page ", site);
+
     // Extract the results from the page.
     const links = await page.evaluate(site => {
       const anchors = Array.from(
         document.querySelectorAll(site.articleSelector)
       );
-      console.log("finding links");
+
       return anchors.reduce(
         (acc, anchor) => {
           let url;
@@ -57,7 +58,6 @@ export default async site => {
           }
 
           acc.good.push(url.href);
-          console.log("returning ", acc);
           return acc;
         },
         {
@@ -69,6 +69,12 @@ export default async site => {
         }
       );
     }, site);
+
+    const author = await page.evaluate(
+      site => document.querySelector(site.authorSelector).textContent,
+      site
+    );
+    links.author = author;
 
     await browser.close();
     return links;

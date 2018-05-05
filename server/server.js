@@ -31,7 +31,6 @@ app.get("/api/hello", (req, res) => {
 });
 
 app.post("/api/articles", (req, res) => {
-  console.log("using ", cnn);
   fnd(cnn)
     .then(result => {
       if (result.error) {

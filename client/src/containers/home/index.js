@@ -12,6 +12,7 @@ class Home extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderStats = this.renderStats.bind(this);
     this.renderError = this.renderError.bind(this);
+    this.authorURL = this.authorURL.bind(this);
   }
   state = {
     url: ""
@@ -27,7 +28,13 @@ class Home extends Component {
     event.stopPropagation();
     this.props.createArticle(url);
   }
+  authorURL() {
+    const {
+      article: { author }
+    } = this.props;
 
+    return `https://www.google.com/search?q=${author.split(" ").join("+")}`;
+  }
   renderStats() {
     const { article } = this.props;
 
@@ -37,8 +44,8 @@ class Home extends Component {
         <p>
           This article was written by:{" "}
           <strong>
-            <a href="https://www.google.com/search?q=Faith+Karimi">
-              A journalist
+            <a href={this.authorURL()} target="_blank">
+              {article.author}
             </a>
           </strong>
         </p>
@@ -50,7 +57,10 @@ class Home extends Component {
         {article.good.map((url, i) => {
           return (
             <p key={i}>
-              <a href={url}>{url}</a> <button>Not a source</button>
+              <a href={url} target="_blank">
+                {url}
+              </a>{" "}
+              <button>Not a source</button>
             </p>
           );
         })}
