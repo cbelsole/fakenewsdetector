@@ -52,38 +52,42 @@ const clearArticleError = error => ({
 });
 
 export const createArticle = url => {
-  return dispatch => {
+  return async dispatch => {
+    if (!url) {
+      dispatch(articleError("url cannot be blank"));
+      return;
+    }
     dispatch(createArticleSuccess(null));
     dispatch(clearArticleError());
     dispatch(articleLoading(true));
 
-    return setTimeout(async () => {
-      try {
-        const res = await fetch(
-          "/api/articles",
-          { body: { url }, method: "POST" },
-          {
-            headers: {
-              "content-type": "application/json"
-            }
-          }
-        );
-
-        const json = await res.json();
-        dispatch(articleLoading(false));
-
-        if (res.status !== 200) {
-          dispatch(articleError(json.error));
-        } else {
-          dispatch(createArticleSuccess(json));
+    try {
+      const res = await fetch("/api/articles", {
+        body: JSON.stringify({ url }),
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
         }
+      });
 
-        return json;
-      } catch (error) {
-        dispatch(articleLoading(false));
-        dispatch(articleError(error));
-        return error;
+      const json = await res.json();
+      dispatch(articleLoading(false));
+
+      if (res.status !== 200) {
+        if (typeof json.error === "object") {
+          dispatch(articleError(""));
+        } else {
+          dispatch(articleError(json.error));
+        }
+      } else {
+        dispatch(createArticleSuccess(json));
       }
-    }, 1000);
+
+      return json;
+    } catch (error) {
+      dispatch(articleLoading(false));
+      dispatch(articleError(error));
+      return error;
+    }
   };
 };

@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
 
-export default async site => {
+export default async (url, site) => {
   const browser = await puppeteer.launch({
     headless: true /*, dumpio: true */
   });
@@ -8,10 +8,7 @@ export default async site => {
   try {
     const page = await browser.newPage();
 
-    await page.goto(
-      "https://www.cnn.com/2018/04/22/entertainment/avicii-death-foul-play-ruled-out/index.html",
-      { waitUntil: "networkidle2" }
-    );
+    await page.goto(url, { waitUntil: "networkidle2" });
 
     // Extract the results from the page.
     const links = await page.evaluate(site => {

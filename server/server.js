@@ -1,6 +1,8 @@
 import express from "express";
 import winston from "winston";
 import expressWinston from "express-winston";
+import bodyParser from "body-parser";
+
 import fnd from "./fnd";
 import cnn from "./sites/cnn";
 
@@ -24,14 +26,12 @@ app.use(
     }
   })
 );
-
-app.get("/api/hello", (req, res) => {
-  // res.status(200);
-  res.send({ express: "Hello From Express" });
-});
+app.use(bodyParser.json());
 
 app.post("/api/articles", (req, res) => {
-  fnd(cnn)
+  const url = req.body.url;
+  console.log(url);
+  fnd(url, cnn)
     .then(result => {
       if (result.error) {
         res.statusCode = 500;
