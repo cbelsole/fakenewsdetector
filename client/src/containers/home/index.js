@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import logo from "../../logo.svg";
-import "./index.css";
+import styles from "./index.css";
 import { createArticle } from "../../modules/article";
 import Spinner from "../spinner";
 
@@ -81,14 +81,16 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to the fake news detector.</h1>
+      <div className={styles.app}>
+        <header className={styles.appHeader}>
+          <img src={logo} className={styles.appLogo} alt="logo" />
+          <h1 className={styles.appTitle}>
+            Welcome to the fake news detector.
+          </h1>
         </header>
         <div>
-          <p className="App-intro">{this.state.response}</p>
-          <p className="App-intro">
+          <p className={styles.appIntro}>{this.state.response}</p>
+          <p className={styles.appIntro}>
             How real is the article you are looking at?
           </p>
           <form onSubmit={this.handleSubmit}>

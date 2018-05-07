@@ -1,11 +1,11 @@
 import React from "react";
-import "./index.css";
+import styles from "./index.css";
 
 export default function Spinner() {
   return (
     <div>
       {" "}
-      <div className="spinner" />
+      <div className={styles.spinner} />
     </div>
   );
 }
