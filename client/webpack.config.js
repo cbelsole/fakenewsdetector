@@ -1,4 +1,5 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 const htmlWebpackPlugin = new HtmlWebPackPlugin({
   template: "./public/index.html",
@@ -7,6 +8,17 @@ const htmlWebpackPlugin = new HtmlWebPackPlugin({
 
 module.exports = {
   entry: ["babel-polyfill", "./src/index.js"],
+  devtool: "source-map",
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: 8080,
+    proxy: {
+      "/api": {
+        target: "http://localhost:5000"
+      }
+    }
+  },
   optimization: {
     splitChunks: {
       cacheGroups: {

@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "client": "cd client && yarn start",
+    "client": "cd client && node_modules/.bin/webpack-dev-server --mode development --open --watch",
     "server": "nodemon server/server.js --exec babel-node --presets es2015,stage-2",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  },
+  "nodemonConfig": {
+    "watch": ["server/"]
   },
   "dependencies": {
     "body-parser": "^1.18.2",
