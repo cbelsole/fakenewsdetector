@@ -4,6 +4,7 @@ import logo from "../../logo.svg";
 import styles from "./index.css";
 import { createArticle } from "../../modules/article";
 import Spinner from "../spinner";
+import Links from "../Links";
 
 class Home extends Component {
   constructor(props) {
@@ -53,17 +54,14 @@ class Home extends Component {
           This website belongs to the corporation:{" "}
           <strong>Turner Broadcasting</strong>{" "}
         </p>
-        <p>Here are a few sources we found in the article:</p>
-        {article.good.map((url, i) => {
-          return (
-            <p key={i}>
-              <a href={url} target="_blank">
-                {url}
-              </a>{" "}
-              <button>Not a source</button>
-            </p>
-          );
-        })}
+        <Links
+          title="These are the outside sources we found in the article"
+          links={article.good}
+        />
+        <Links
+          title="These are the sources we found from the same corporation"
+          links={article.corps}
+        />
       </div>
     );
   }
