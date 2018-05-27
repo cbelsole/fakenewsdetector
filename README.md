@@ -35,7 +35,7 @@ Eventually, it will score articles on their sources to and provide some context 
 
 Sites are kept in [server/sites](https://github.com/cbelsole/fakenewsdetector/tree/master/server/sites) as a flat file for configuration for now.
 
-```json
+```js
 {
   "corp": [], // hostnames of corporate affiliated sites
   "advertizer": [], // hostnames of advertizers to filter out of results
