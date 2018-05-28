@@ -3,11 +3,11 @@ import winston from "winston";
 import expressWinston from "express-winston";
 import bodyParser from "body-parser";
 import path from "path";
-import url from "url";
 import fs from "fs";
 
 import fnd from "./fnd";
 import cnn from "./sites/cnn";
+import { find as findCorporation } from "./models/corporation";
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -90,18 +90,25 @@ app.get("/*", (req, res) => {
 
 app.post("/api/articles", (req, res) => {
   const url = req.body.url;
-  console.log(url);
   fnd(url, cnn)
     .then(result => {
       if (result.error) {
         res.statusCode = 500;
-        return res.send(JSON.stringify({ error: error }));
+        return res.send(JSON.stringify({ error: result.error }));
+      }
+
+      const parsedURL = new URL(url);
+      const corporation = findCorporation(parsedURL.origin);
+      console.log(corporation);
+      if (corporation) {
+        result.corporation = corporation;
       }
 
       return res.send(JSON.stringify(result));
     })
     .catch(error => {
       res.statusCode = 500;
+      console.log(error);
       return res.send(JSON.stringify({ error: error }));
     });
 });

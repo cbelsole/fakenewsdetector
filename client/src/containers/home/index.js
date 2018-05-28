@@ -37,7 +37,7 @@ class Home extends Component {
     return `https://www.google.com/search?q=${author.split(" ").join("+")}`;
   }
   renderStats() {
-    const { article } = this.props;
+    const { author, good, corps, corporation } = this.props.article;
 
     return (
       <div>
@@ -46,21 +46,23 @@ class Home extends Component {
           This article was written by:{" "}
           <strong>
             <a href={this.authorURL()} target="_blank">
-              {article.author}
+              {author}
             </a>
           </strong>
         </p>
         <p>
           This website belongs to the corporation:{" "}
-          <strong>Turner Broadcasting</strong>{" "}
+          <a href={corporation.info} target="_blank">
+            {corporation.name}
+          </a>
         </p>
         <Links
           title="These are the outside sources we found in the article"
-          links={article.good}
+          links={good}
         />
         <Links
           title="These are the sources we found from the same corporation"
-          links={article.corps}
+          links={corps}
         />
       </div>
     );

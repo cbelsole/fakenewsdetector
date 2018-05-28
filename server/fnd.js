@@ -5,13 +5,19 @@ export default async (url, site) => {
     headless: true /*, dumpio: true */
   });
 
-  try {
-    const page = await browser.newPage();
+  const page = await browser.newPage().catch(error => {
+    browser.close();
+    return { error: error };
+  });
 
-    await page.goto(url, { waitUntil: "networkidle2" });
+  await page.goto(url, { waitUntil: "networkidle2" }).catch(error => {
+    browser.close();
+    return { error: error };
+  });
 
-    // Extract the results from the page.
-    const links = await page.evaluate(site => {
+  // Extract the results from the page.
+  const links = await page
+    .evaluate(site => {
       const anchors = Array.from(
         document.querySelectorAll(site.articleSelector)
       );
@@ -65,18 +71,23 @@ export default async (url, site) => {
           ignored: []
         }
       );
-    }, site);
+    }, site)
+    .catch(error => {
+      browser.close();
+      return { error: error };
+    });
 
-    const author = await page.evaluate(
+  const author = await page
+    .evaluate(
       site => document.querySelector(site.authorSelector).textContent,
       site
-    );
-    links.author = author;
+    )
+    .catch(error => {
+      browser.close();
+      return { error: error };
+    });
+  links.author = author;
 
-    await browser.close();
-    return links;
-  } catch (error) {
-    await browser.close();
-    return { error: error };
-  }
+  await browser.close();
+  return links;
 };
