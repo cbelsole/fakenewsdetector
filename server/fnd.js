@@ -78,10 +78,19 @@ export default async (url, site) => {
     });
 
   const author = await page
-    .evaluate(
-      site => document.querySelector(site.authorSelector).textContent,
-      site
-    )
+    .evaluate(site => {
+      // document.querySelector(site.authorSelector).textContent;
+      let authors = site.authorSelector.reduce((acc, selector) => {
+        let element = document.querySelector(selector);
+        if (element !== null) {
+          acc.push(element.textContent);
+        }
+        return acc;
+      }, []);
+      // console.log("debug authorCleanup", site.authorCleanup(authors[0]));
+      // return site.authorCleanup(authors[0]);
+      return authors[0];
+    }, site)
     .catch(error => {
       browser.close();
       return { error: error };
