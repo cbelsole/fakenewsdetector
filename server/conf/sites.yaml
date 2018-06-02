@@ -1,0 +1,31 @@
+# supported
+sites:
+  cnn: https://www.cnn.com
+  nbc_news: https://www.nbcnews.com
+
+# unsupported
+# fox_news: http://www.foxnews.com
+# fox_sports: https://www.foxsports.com
+# sky_news: https://news.sky.com
+# new_york_post: https://nypost.com
+# wall_street_journal: https://www.wsj.com
+# austrailian: https://www.theaustralian.com.au/
+# sun: https://www.thesun.co.uk/
+# times: https://www.thetimes.co.uk/
+# cnbc: https://www.cnbc.com
+# msnbc: http://www.msnbc.com
+# nbc_sports: https://www.nbcsports.com
+# nbc_boston: https://www.nbcboston.com
+# breitbart: http://www.breitbart.com
+# new_york_times: https://www.nytimes.com
+# washington_post: https://www.washingtonpost.com
+# huffpost: https://www.huffingtonpost.com
+# buzzfeed: https://www.buzzfeed.com
+# guardian: https://www.theguardian.com
+# daily_beast: https://www.thedailybeast.com
+# newsweek: http://www.newsweek.com
+# hill: http://thehill.com
+# dans_paper: http://www.danspapers.com
+# the_blaze: https://www.theblaze.com
+# slate: https://slate.com
+# bloomberg: https://www.bloomberg.com

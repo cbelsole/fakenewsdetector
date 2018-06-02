@@ -6,8 +6,8 @@ import path from "path";
 import fs from "fs";
 
 import fnd from "./fnd";
-import cnn from "./sites/cnn";
 import { find as findCorporation } from "./models/corporation";
+import { find as findSite } from "./models/site";
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -90,14 +90,29 @@ app.get("/*", (req, res) => {
 
 app.post("/api/articles", (req, res) => {
   const url = req.body.url;
-  fnd(url, cnn)
+  let parsedURL;
+  try {
+    parsedURL = new URL(url);
+  } catch (err) {
+    res.statusCode = 400;
+    return res.send(
+      JSON.stringify({ error: `could not parse url: ${url.origin}` })
+    );
+  }
+
+  const site = findSite(parsedURL.origin);
+  if (!site) {
+    res.statusCode = 404;
+    return res.send(JSON.stringify({ error: `site: ${url.origin} not found` }));
+  }
+
+  fnd(url, site)
     .then(result => {
       if (result.error) {
         res.statusCode = 500;
         return res.send(JSON.stringify({ error: result.error }));
       }
 
-      const parsedURL = new URL(url);
       const corporation = findCorporation(parsedURL.origin);
       if (corporation) {
         result.corporation = corporation;

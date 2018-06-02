@@ -24,6 +24,7 @@ corporations:
       cnbc: https://www.cnbc.com
       msnbc: http://www.msnbc.com
       nbc_sports: https://www.nbcsports.com
+      nbc_boston: https://www.nbcboston.com
   breitbart_news_network:
     name: Breitbart News Network
     info: https://en.wikipedia.org/wiki/Breitbart_News

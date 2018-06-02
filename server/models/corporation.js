@@ -13,13 +13,13 @@ try {
   throw `error loading corporation yaml: ${err}`;
 }
 
-export const find = hostname => {
+export const find = origin => {
   let c;
 
   forEach(corporations, corporation => {
     forEach(corporation.sites, (url, site) => {
       const parsedURL = new URL(url);
-      if (parsedURL.origin === hostname) {
+      if (parsedURL.origin === origin) {
         c = corporation;
       }
     });
