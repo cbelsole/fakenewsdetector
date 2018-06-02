@@ -1,6 +1,6 @@
 const authorCleanup = function(author) {
   remove = new RegExp(/^By (.*), CNN/);
-  return author.replace(remove, '$1');
+  return author.replace(remove, "$1");
 };
 
 export default {
@@ -34,6 +34,6 @@ export default {
   ],
   ignore: ["instagram.com", "yahoo.com", "twitter.com", "facebook.com"],
   articleSelector: 'div[itemprop="articleBody"] a',
-  authorSelector: [".metadata__byline__author a", ".metadata__byline__author"],
+  authorSelectors: [".metadata__byline__author a", ".metadata__byline__author"],
   authorCleanup
 };

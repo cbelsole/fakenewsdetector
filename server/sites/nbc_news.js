@@ -10,5 +10,5 @@ export default {
   ignore: ["instagram.com", "yahoo.com", "twitter.com", "facebook.com"],
   articleSelector: ".body___vDyiy p a",
   // this is likely not sustainable as the css is probably dynamic
-  authorSelector: [".inlineAuthor___2FfYY"]
+  authorSelectors: [".inlineAuthor___2FfYY"]
 };

@@ -13,6 +13,7 @@ Eventually, it will score articles on their sources to and provide some context 
 
 - [CNN](https://www.cnn.com/)
 - [NBC News](https://www.nbcnews.com/)
+- [CNBC](https://www.cnbc.com/)
 
 ## Unsupported Sites (PRs wanted)
 

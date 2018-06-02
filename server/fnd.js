@@ -6,13 +6,15 @@ export default async (url, site) => {
   });
 
   const page = await browser.newPage().catch(error => {
+    console.error(error);
     browser.close();
-    return { error: error };
+    return { error: error.message };
   });
 
   await page.goto(url, { waitUntil: "networkidle2" }).catch(error => {
+    console.error(error);
     browser.close();
-    return { error: error };
+    return { error: error.message };
   });
 
   // Extract the results from the page.
@@ -73,14 +75,19 @@ export default async (url, site) => {
       );
     }, site)
     .catch(error => {
+      console.error(error);
       browser.close();
-      return { error: error };
+      return { error: error.message };
     });
 
-  const author = await page
+  const authors = await page
     .evaluate(site => {
+      if (!site.authorSelectors) {
+        return "";
+      }
+
       // document.querySelector(site.authorSelector).textContent;
-      let authors = site.authorSelector.reduce((acc, selector) => {
+      let authors = site.authorSelectors.reduce((acc, selector) => {
         let element = document.querySelector(selector);
         if (element !== null) {
           acc.push(element.textContent);
@@ -89,13 +96,15 @@ export default async (url, site) => {
       }, []);
       // console.log("debug authorCleanup", site.authorCleanup(authors[0]));
       // return site.authorCleanup(authors[0]);
-      return authors[0];
+      return authors;
     }, site)
     .catch(error => {
+      console.error(error);
       browser.close();
-      return { error: error };
+      return [];
     });
-  links.author = author;
+
+  links.authors = authors;
 
   await browser.close();
   return links;

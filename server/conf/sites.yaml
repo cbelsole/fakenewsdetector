@@ -2,6 +2,7 @@
 sites:
   cnn: https://www.cnn.com
   nbc_news: https://www.nbcnews.com
+  cnbc: https://www.cnbc.com
 
 # unsupported
 # fox_news: http://www.foxnews.com
@@ -12,7 +13,6 @@ sites:
 # austrailian: https://www.theaustralian.com.au/
 # sun: https://www.thesun.co.uk/
 # times: https://www.thetimes.co.uk/
-# cnbc: https://www.cnbc.com
 # msnbc: http://www.msnbc.com
 # nbc_sports: https://www.nbcsports.com
 # nbc_boston: https://www.nbcboston.com

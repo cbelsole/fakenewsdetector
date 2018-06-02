@@ -31,25 +31,29 @@ class Home extends Component {
   }
   author() {
     const {
-      article: { author }
+      article: { authors }
     } = this.props;
 
-    if (!author) {
+    if (!authors.length) {
       return null;
     }
-
-    const url = `https://www.google.com/search?q=${author
-      .split(" ")
-      .join("+")}`;
 
     return (
       <p>
         This article was written by:{" "}
-        <strong>
-          <a href={url} target="_blank">
-            {author}
-          </a>
-        </strong>
+        {authors.map(author => {
+          const url = `https://www.google.com/search?q=${author
+            .split(" ")
+            .join("+")}`;
+
+          return (
+            <strong key={author}>
+              <a href={url} target="_blank">
+                {author}
+              </a>
+            </strong>
+          );
+        })}
       </p>
     );
   }
@@ -59,7 +63,7 @@ class Home extends Component {
     return (
       <div>
         <h2>Here's what we found</h2>
-        {this.author}
+        {this.author()}
         <p>
           This website belongs to the corporation:{" "}
           <a href={corporation.info} target="_blank">
