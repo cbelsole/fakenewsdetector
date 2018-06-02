@@ -99,7 +99,6 @@ app.post("/api/articles", (req, res) => {
 
       const parsedURL = new URL(url);
       const corporation = findCorporation(parsedURL.origin);
-      console.log(corporation);
       if (corporation) {
         result.corporation = corporation;
       }

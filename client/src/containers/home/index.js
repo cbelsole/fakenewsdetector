@@ -13,7 +13,7 @@ class Home extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderStats = this.renderStats.bind(this);
     this.renderError = this.renderError.bind(this);
-    this.authorURL = this.authorURL.bind(this);
+    this.author = this.author.bind(this);
   }
   state = {
     url: ""
@@ -29,27 +29,37 @@ class Home extends Component {
     event.stopPropagation();
     this.props.createArticle(url);
   }
-  authorURL() {
+  author() {
     const {
       article: { author }
     } = this.props;
 
-    return `https://www.google.com/search?q=${author.split(" ").join("+")}`;
+    if (!author) {
+      return null;
+    }
+
+    const url = `https://www.google.com/search?q=${author
+      .split(" ")
+      .join("+")}`;
+
+    return (
+      <p>
+        This article was written by:{" "}
+        <strong>
+          <a href={url} target="_blank">
+            {author}
+          </a>
+        </strong>
+      </p>
+    );
   }
   renderStats() {
-    const { author, good, corps, corporation } = this.props.article;
+    const { good, corps, corporation } = this.props.article;
 
     return (
       <div>
         <h2>Here's what we found</h2>
-        <p>
-          This article was written by:{" "}
-          <strong>
-            <a href={this.authorURL()} target="_blank">
-              {author}
-            </a>
-          </strong>
-        </p>
+        {this.author}
         <p>
           This website belongs to the corporation:{" "}
           <a href={corporation.info} target="_blank">
