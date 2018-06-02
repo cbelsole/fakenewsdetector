@@ -12,13 +12,13 @@ Eventually, it will score articles on their sources to and provide some context 
 ## Supported Sites
 
 - [CNN](https://www.cnn.com/)
+- [NBC News](https://www.nbcnews.com/)
 
 ## Unsupported Sites (PRs wanted)
 
 - [Fox News](http://www.foxnews.com/)
 - [MSNBC](http://www.msnbc.com/)
 - [Breitbart](http://www.breitbart.com/)
-- [NBC News](https://www.nbcnews.com/)
 - [New York Times](https://www.nytimes.com/)
 - [Washington Post](https://www.washingtonpost.com/)
 - [Huffington Post](https://www.huffingtonpost.com/)
@@ -33,7 +33,7 @@ Eventually, it will score articles on their sources to and provide some context 
 
 ## How do I add a site?
 
-Sites are kept in [server/sites](https://github.com/cbelsole/fakenewsdetector/tree/master/server/sites) as a flat file for configuration for now.
+1. Sites are kept in [server/sites](https://github.com/cbelsole/fakenewsdetector/tree/master/server/sites) as a flat file for configuration for now.
 
 ```js
 {
@@ -44,6 +44,8 @@ Sites are kept in [server/sites](https://github.com/cbelsole/fakenewsdetector/tr
   "authorSelector": "css selector" // css selector to find the author of the article
 }
 ```
+2. Add the site to the list of supported sites in [server/conf/sites.yaml](https://github.com/cbelsole/fakenewsdetector/tree/master/server/conf/sites.yaml)
+3. Add corporate information for the site to [server/conf/corporations.yaml](https://github.com/cbelsole/fakenewsdetector/tree/master/server/conf/corporations.yaml)
 
 ## Start the dev server
 
