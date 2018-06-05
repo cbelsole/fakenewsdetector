@@ -76,15 +76,15 @@ export default async (url, site) => {
         };
       });
 
-    const authors = await page
+    let authors = await page
       .evaluate(site => {
         if (!site.authorSelectors) {
           return [];
         }
 
-        // document.querySelector(site.authorSelector).textContent;
         let authors = site.authorSelectors.reduce((acc, selector) => {
           let element = document.querySelector(selector);
+
           if (element !== null) {
             const authorText = element.textContent;
             if (site.authorCleanup) {
@@ -93,16 +93,22 @@ export default async (url, site) => {
               acc.push(authorText);
             }
           }
+
           return acc;
         }, []);
-        // console.log("debug authorCleanup", site.authorCleanup(authors[0]));
-        // return site.authorCleanup(authors[0]);
+
         return authors;
       }, site)
       .catch(error => {
         console.error(error);
+
         return [];
       });
+
+    if (site.authorCleanup) {
+      authors = authors.map(author => site.authorCleanup(author));
+      authors = authors.flatten();
+    }
 
     await browser.close();
     return { links, authors };
