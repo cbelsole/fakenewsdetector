@@ -58,7 +58,10 @@ class Home extends Component {
     );
   }
   renderStats() {
-    const { good, corps, corporation } = this.props.article;
+    const {
+      links: { good, corps },
+      corporation
+    } = this.props.article;
 
     return (
       <div>
@@ -128,4 +131,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { createArticle: createArticle })(Home);
+export default connect(
+  mapStateToProps,
+  { createArticle: createArticle }
+)(Home);

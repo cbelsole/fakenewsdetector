@@ -54,7 +54,6 @@ app.get("/*", (req, res) => {
     ext = ".html";
   }
 
-  console.log("Pathname: ", pathname, " extention: ", ext);
   // whitelist file extensions .js and .html for now
   if (ext !== ".js" && ext !== ".html" && ext !== ".svg") {
     res.status(404).send(JSON.stringify({ error: "resource not found" }));
