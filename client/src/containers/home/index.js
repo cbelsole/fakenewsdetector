@@ -56,7 +56,7 @@ class Home extends Component {
             );
           } else {
             accum = accum.concat([
-              <span> and </span>,
+              <span key={author + "and"}> and </span>,
               <strong key={author}>
                 <a href={url} target="_blank">
                   {author}
