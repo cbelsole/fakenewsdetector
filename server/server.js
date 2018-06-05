@@ -116,7 +116,7 @@ app.post("/api/articles", (req, res) => {
     })
     .catch(error => {
       res.statusCode = 500;
-      console.error(error.message);
+      console.error(error);
       return res.send(JSON.stringify({ error: "check the logs" }));
     });
 });
