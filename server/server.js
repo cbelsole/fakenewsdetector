@@ -107,11 +107,6 @@ app.post("/api/articles", (req, res) => {
 
   fnd(url, site)
     .then(result => {
-      if (result.error) {
-        res.statusCode = 500;
-        return res.send(JSON.stringify({ error: result.error }));
-      }
-
       const corporation = findCorporation(parsedURL.origin);
       if (corporation) {
         result.corporation = corporation;
@@ -121,8 +116,8 @@ app.post("/api/articles", (req, res) => {
     })
     .catch(error => {
       res.statusCode = 500;
-      console.log(error);
-      return res.send(JSON.stringify({ error: error }));
+      console.error(error.message);
+      return res.send(JSON.stringify({ error: "check the logs" }));
     });
 });
 

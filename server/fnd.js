@@ -109,6 +109,14 @@ export default async (url, site) => {
   } catch (error) {
     console.error(error);
     await browser.close();
-    return { error: error.message };
+    return {
+      links: {
+        good: [],
+        corps: [],
+        advertizes: [],
+        ignored: []
+      },
+      authors: []
+    };
   }
 };
