@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import logo from "../../logo.svg";
-import styles from "./index.css";
-import { createArticle } from "../../modules/article";
-import Spinner from "../spinner";
-import Links from "../Links";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import logo from '../../logo.svg';
+import styles from './index.css';
+import { createArticle } from '../../modules/article';
+import Spinner from '../spinner';
+import Links from '../link';
 
 class Home extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class Home extends Component {
     this.author = this.author.bind(this);
   }
   state = {
-    url: ""
+    url: ''
   };
 
   handleChange(event) {
@@ -40,11 +40,9 @@ class Home extends Component {
 
     return (
       <p>
-        This article was written by:{" "}
-        {authors.map(author => {
-          const url = `https://www.google.com/search?q=${author
-            .split(" ")
-            .join("+")}`;
+        This article was written by:{' '}
+        {authors.map((author) => {
+          const url = `https://www.google.com/search?q=${author.split(' ').join('+')}`;
 
           return (
             <strong key={author}>
@@ -68,7 +66,7 @@ class Home extends Component {
         <h2>Here's what we found</h2>
         {this.author()}
         <p>
-          This website belongs to the corporation:{" "}
+          This website belongs to the corporation:{' '}
           <a href={corporation.info} target="_blank">
             {corporation.name}
           </a>
@@ -101,15 +99,11 @@ class Home extends Component {
       <div className={styles.app}>
         <header className={styles.appHeader}>
           <img src={logo} className={styles.appLogo} alt="logo" />
-          <h1 className={styles.appTitle}>
-            Welcome to the fake news detector.
-          </h1>
+          <h1 className={styles.appTitle}>Welcome to the fake news detector.</h1>
         </header>
         <div>
           <p className={styles.appIntro}>{this.state.response}</p>
-          <p className={styles.appIntro}>
-            How real is the article you are looking at?
-          </p>
+          <p className={styles.appIntro}>How real is the article you are looking at?</p>
           <form onSubmit={this.handleSubmit}>
             <input type="text" onChange={this.handleChange} />
             <button type="submit">Submit </button>
@@ -123,7 +117,7 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     article: state.article.article,
     articleLoading: state.article.loading,
@@ -131,7 +125,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { createArticle: createArticle }
-)(Home);
+export default connect(mapStateToProps, { createArticle: createArticle })(Home);

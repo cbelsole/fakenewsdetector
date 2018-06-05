@@ -82,3 +82,19 @@ corporations:
     info: https://en.wikipedia.org/wiki/Bloomberg_L.P.
     sites:
       bloomberg: https://www.bloomberg.com
+  the_british_broadcasting_company:
+    name: BBC
+    info: https://en.wikipedia.org/wiki/BBC
+    sites:
+      bbc: http://www.bbc.com/
+  national_public_radio:
+      name: NPR (National Public Radio)
+      info: https://en.wikipedia.org/wiki/NPR
+      sites:
+        npr: https://www.npr.org/
+  Tronc:
+    name: Los Angeles Times
+    info: https://en.wikipedia.org/wiki/Los_Angeles_Times
+    sites: 
+      la_times: www.http://latimes.com
+  
