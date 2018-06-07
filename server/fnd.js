@@ -16,25 +16,17 @@ export default async (url, site) => {
     // Extract the results from the page.
     const links = await page
       .evaluate(site => {
-        const anchors = Array.from(
-          document.querySelectorAll(site.articleSelector)
-        );
+        let anchors = [];
+        // Use jQuery if you can since it supports more css selectors than
+        // Chromium such as a:not(:has(span)) for money.cnn.com
+        if (jQuery) {
+          anchors = jQuery.find(site.articleSelector);
+        } else {
+          anchors = Array.from(document.querySelectorAll(site.articleSelector));
+        }
 
         return anchors.reduce(
           (acc, anchor) => {
-            if (site.skipArticle) {
-              let skip = false;
-
-              skipArticle.forEach(selector => {
-                if (anchor.$(selector).length) {
-                  skip = true;
-                }
-              });
-              if (skip) {
-                return acc;
-              }
-            }
-
             let url;
             try {
               url = new URL(anchor.href);

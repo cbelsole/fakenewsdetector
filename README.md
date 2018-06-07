@@ -12,6 +12,7 @@ Eventually, it will score articles on their sources to and provide some context 
 ## Supported Sites
 
 - [CNN](https://www.cnn.com/)
+- [CNN Money](money.cnn.com)
 - [NBC News](https://www.nbcnews.com/)
 - [CNBC](https://www.cnbc.com/)
 

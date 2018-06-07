@@ -80,12 +80,14 @@ class Home extends Component {
       <div>
         <h2>Here's what we found</h2>
         {this.author()}
-        <p>
-          This website belongs to the corporation:{" "}
-          <a href={corporation.info} target="_blank">
-            {corporation.name}
-          </a>
-        </p>
+        {corporation && (
+          <p>
+            This website belongs to the corporation:{" "}
+            <a href={corporation.info} target="_blank">
+              {corporation.name}
+            </a>
+          </p>
+        )}
         <Links
           title="These are the outside sources we found in the article"
           links={good}

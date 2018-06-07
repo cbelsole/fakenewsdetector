@@ -4,7 +4,7 @@ corporations:
     info: en.wikipedia.org/wiki/Turner_Broadcasting_System
     sites:
       cnn: www.cnn.com
-      # cnn_money: money.cnn.com
+      cnn_money: money.cnn.com
   news_corporation:
     name: News Corp
     info: en.wikipedia.org/wiki/News_Corporation
