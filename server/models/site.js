@@ -9,7 +9,7 @@ try {
   const siteList = yaml.safeLoad(
     fs.readFileSync(path.join(__dirname, "../conf/sites.yaml"), "utf8")
   ).sites;
-  forEach(siteList, (url, site) => (sites[site] = { url: url }));
+  forEach(siteList, (site, hostname) => (sites[site] = { hostname: hostname }));
   forEach(sites, (conf, site) => {
     const external = require(`../sites/${site}`).default;
     sites[site] = { ...conf, ...external };
@@ -18,11 +18,10 @@ try {
   throw `error loading site yaml: ${err}`;
 }
 
-export const find = origin => {
+export const find = hostname => {
   let s;
-  forEach(sites, site => {
-    const parsedURL = new URL(site.url);
-    if (parsedURL.origin === origin) {
+  forEach(sites, (site, host) => {
+    if (site.hostname === hostname) {
       s = site;
     }
   });

@@ -7,6 +7,10 @@ export default async (url, site) => {
 
   try {
     const page = await browser.newPage();
+    page.on("console", msg => {
+      console.log(msg.text());
+    });
+
     await page.goto(url, { waitUntil: "networkidle2" });
 
     // Extract the results from the page.
@@ -18,13 +22,25 @@ export default async (url, site) => {
 
         return anchors.reduce(
           (acc, anchor) => {
+            if (site.skipArticle) {
+              let skip = false;
+
+              skipArticle.forEach(selector => {
+                if (anchor.$(selector).length) {
+                  skip = true;
+                }
+              });
+              if (skip) {
+                return acc;
+              }
+            }
+
             let url;
             try {
               url = new URL(anchor.href);
             } catch (error) {
               url = new URL("http://www.fake.com");
             }
-            // acc.debug.push(url.protocol);
 
             if (
               url.hostname === "www.fake.com" ||
@@ -59,7 +75,6 @@ export default async (url, site) => {
           },
           {
             good: [],
-            // debug: [],
             corps: [],
             advertizes: [],
             ignored: []
@@ -68,6 +83,7 @@ export default async (url, site) => {
       }, site)
       .catch(error => {
         console.error(error);
+
         return {
           good: [],
           corps: [],

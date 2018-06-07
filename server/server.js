@@ -94,20 +94,20 @@ app.post("/api/articles", (req, res) => {
     parsedURL = new URL(url);
   } catch (err) {
     res.statusCode = 400;
-    return res.send(
-      JSON.stringify({ error: `could not parse url: ${url.origin}` })
-    );
+    return res.send(JSON.stringify({ error: `could not parse url: ${url}` }));
   }
 
-  const site = findSite(parsedURL.origin);
+  const site = findSite(parsedURL.hostname);
   if (!site) {
     res.statusCode = 404;
-    return res.send(JSON.stringify({ error: `site: ${url.origin} not found` }));
+    return res.send(
+      JSON.stringify({ error: `site: ${parsedURL.hostname} not found` })
+    );
   }
 
   fnd(url, site)
     .then(result => {
-      const corporation = findCorporation(parsedURL.origin);
+      const corporation = findCorporation(parsedURL.hostname);
       if (corporation) {
         result.corporation = corporation;
       }

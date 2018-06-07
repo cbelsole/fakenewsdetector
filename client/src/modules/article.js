@@ -70,24 +70,27 @@ export const createArticle = url => {
         }
       });
 
-      const json = await res.json();
       dispatch(articleLoading(false));
 
-      if (res.status !== 200) {
-        if (typeof json.error === "object") {
-          dispatch(articleError(""));
-        } else {
-          dispatch(articleError(json.error));
-        }
+      if (res.status >= 500 && res.status <= 599) {
+        dispatch(articleError("something went wrong"));
       } else {
-        dispatch(createArticleSuccess(json));
+        const json = await res.json();
+
+        if (res.status != 200) {
+          dispatch(articleError(json.error));
+        } else {
+          dispatch(createArticleSuccess(json));
+        }
+
+        return json;
       }
 
-      return json;
-    } catch (error) {
+      return null;
+    } catch (e) {
       dispatch(articleLoading(false));
-      dispatch(articleError(error));
-      return error;
+      dispatch(articleError(e || "something went wrong"));
+      return e || "something went wrong";
     }
   };
 };

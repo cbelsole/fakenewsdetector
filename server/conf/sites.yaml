@@ -1,31 +1,32 @@
 # supported
 sites:
-  cnn: https://www.cnn.com
-  nbc_news: https://www.nbcnews.com
-  cnbc: https://www.cnbc.com
+  www.cnn.com: cnn
+  # money.cnn.com: money_cnn
+  www.nbcnews.com: nbc_news
+  www.cnbc.com: cnbc
 
 # unsupported
-# fox_news: http://www.foxnews.com
-# fox_sports: https://www.foxsports.com
-# sky_news: https://news.sky.com
-# new_york_post: https://nypost.com
-# wall_street_journal: https://www.wsj.com
-# austrailian: https://www.theaustralian.com.au/
-# sun: https://www.thesun.co.uk/
-# times: https://www.thetimes.co.uk/
-# msnbc: http://www.msnbc.com
-# nbc_sports: https://www.nbcsports.com
-# nbc_boston: https://www.nbcboston.com
-# breitbart: http://www.breitbart.com
-# new_york_times: https://www.nytimes.com
-# washington_post: https://www.washingtonpost.com
-# huffpost: https://www.huffingtonpost.com
-# buzzfeed: https://www.buzzfeed.com
-# guardian: https://www.theguardian.com
-# daily_beast: https://www.thedailybeast.com
-# newsweek: http://www.newsweek.com
-# hill: http://thehill.com
-# dans_paper: http://www.danspapers.com
-# the_blaze: https://www.theblaze.com
-# slate: https://slate.com
-# bloomberg: https://www.bloomberg.com
+# www.foxnews.com: fox_news
+# www.foxsports.com: fox_sports
+# news.sky.com: sky_news
+# nypost.com: new_york_post
+# www.wsj.com: wall_street_journal
+# www.theaustralian.com.au: austrailian
+# www.thesun.co.uk: sun
+# www.thetimes.co.uk: times
+# www.msnbc.com: msnbc
+# www.nbcsports.com: nbc_sports
+# www.nbcboston.com: nbc_boston
+# www.breitbart.com: breitbart
+# www.nytimes.com: new_york_times
+# www.washingtonpost.com: washington_post
+# www.huffingtonpost.com: huffpost
+# www.buzzfeed.com: buzzfeed
+# www.theguardian.com: guardian
+# www.thedailybeast.com: daily_beast
+# www.newsweek.com: newsweek
+# thehill.com: hill
+# www.danspapers.com: dans_paper
+# www.theblaze.com: the_blaze
+# slate.com: slate
+# www.bloomberg.com: bloomberg

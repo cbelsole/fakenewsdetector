@@ -5,7 +5,8 @@ export default {
     "cnn.it",
     "cnnnewsource.com",
     "turner.com",
-    "turnerjobs.com"
+    "turnerjobs.com",
+    "money.cnn.com"
   ],
   advertizer: [
     "lendingtree.com",
