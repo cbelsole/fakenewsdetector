@@ -106,7 +106,7 @@ class Home extends Component {
     return (
       <div>
         <h2>Sorry, it looks like we encountered an error.</h2>
-        <p>{error.message}</p>
+        <p>{error}</p>
       </div>
     );
   }

@@ -89,8 +89,8 @@ export const createArticle = url => {
       return null;
     } catch (e) {
       dispatch(articleLoading(false));
-      dispatch(articleError(e || "something went wrong"));
-      return e || "something went wrong";
+      dispatch(articleError(e ? e.message : "something went wrong"));
+      return e ? e.message : "something went wrong";
     }
   };
 };
