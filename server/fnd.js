@@ -20,6 +20,7 @@ export default async (url, site) => {
         // Use jQuery if you can since it supports more css selectors than
         // Chromium such as a:not(:has(span)) for money.cnn.com
         if (jQuery) {
+          console.log("using jQuery");
           anchors = jQuery.find(site.articleSelector);
         } else {
           anchors = Array.from(document.querySelectorAll(site.articleSelector));
