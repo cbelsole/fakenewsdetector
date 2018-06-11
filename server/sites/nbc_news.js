@@ -11,6 +11,7 @@ export default {
   articleSelector: ".body___vDyiy p a",
   // this is likely not sustainable as the css is probably dynamic
   authorSelectors: [".inlineAuthor___2FfYY"],
+  titleSelector: ".headline___nhqI9",
   authorCleanup: function(author) {
     const re = /by (\w+( \w*))( and (\w+( \w*)))?/;
     let authors = re.exec(author);

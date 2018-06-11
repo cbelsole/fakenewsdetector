@@ -4,11 +4,16 @@ export default function Links(props) {
   const { url } = props;
 
   return (
-    <p>
-      <a href={url} target="_blank">
-        {url}
-      </a>{" "}
-      <button>Not a source</button>
-    </p>
+    <tr>
+      <td>
+        <a href={url} target="_blank">
+          {url}
+        </a>
+      </td>
+      <td>
+        <button>Not a source</button>
+        <button>Follow this link</button>
+      </td>
+    </tr>
   );
 }

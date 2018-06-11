@@ -32,6 +32,7 @@ export default {
   articleSelector: "#storytext p a:not(:has(span))",
   skipArticle: [".inStoryHeading"],
   authorSelectors: [".byline"],
+  titleSelector: ".article-title",
   authorCleanup: function(author) {
     const re = /by (\w+( \w*))( and (\w+( \w*)))?/;
     let authors = re.exec(author);

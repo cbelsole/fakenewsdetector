@@ -119,8 +119,17 @@ export default async (url, site) => {
       authors = authors.flatten();
     }
 
+    let title = await page
+      .evaluate(site => {
+        return document.querySelector(site.titleSelector).textContent;
+      }, site)
+      .catch(error => {
+        console.error(error);
+        return "title not found";
+      });
+
     await browser.close();
-    return { links, authors };
+    return { links, authors, title };
   } catch (error) {
     console.error(error);
     await browser.close();
@@ -131,7 +140,8 @@ export default async (url, site) => {
         advertizes: [],
         ignored: []
       },
-      authors: []
+      authors: [],
+      title: ""
     };
   }
 };

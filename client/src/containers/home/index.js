@@ -39,8 +39,8 @@ class Home extends Component {
     }
 
     return (
-      <p>
-        This article was written by:{" "}
+      <div>
+        Written by:{" "}
         {authors.reduce((accum, author) => {
           const url = `https://www.google.com/search?q=${author
             .split(" ")
@@ -48,54 +48,56 @@ class Home extends Component {
 
           if (accum.length === 0) {
             accum.push(
-              <strong key={author}>
+              <p key={author}>
                 <a href={url} target="_blank">
                   {author}
                 </a>
-              </strong>
+              </p>
             );
           } else {
-            accum = accum.concat([
-              <span key={author + "and"}> and </span>,
-              <strong key={author}>
+            accum = accum.push(
+              <p key={author}>
                 <a href={url} target="_blank">
                   {author}
                 </a>
-              </strong>
-            ]);
+              </p>
+            );
           }
 
           return accum;
         }, [])}
-      </p>
+      </div>
     );
   }
   renderStats() {
     const {
       links: { good, corps },
-      corporation
+      corporation,
+      title
     } = this.props.article;
 
     return (
       <div>
-        <h2>Here's what we found</h2>
-        {this.author()}
-        {corporation && (
-          <p>
-            This website belongs to the corporation:{" "}
-            <a href={corporation.info} target="_blank">
-              {corporation.name}
-            </a>
-          </p>
-        )}
-        <Links
-          title="These are the outside sources we found in the article"
-          links={good}
-        />
-        <Links
-          title="These are the sources we found from the same corporation"
-          links={corps}
-        />
+        <h2>{title}</h2>
+        <div>
+          <div className={styles.leftSection}>
+            {this.author()}
+            {corporation && (
+              <div>
+                <p> Under the umbrella of: </p>
+                <p>
+                  <a href={corporation.info} target="_blank">
+                    {corporation.name}
+                  </a>
+                </p>
+              </div>
+            )}
+          </div>
+          <div className={styles.rightSection}>
+            <Links title="Outside Sources" links={good} />
+            <Links title="Corporate Sources" links={corps} />
+          </div>
+        </div>
       </div>
     );
   }

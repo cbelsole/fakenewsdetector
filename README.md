@@ -43,7 +43,8 @@ Eventually, it will score articles on their sources to and provide some context 
   "advertizer": [], // hostnames of advertizers to filter out of results
   "ignore": [], // ignored hostnames
   "articleSelector": "css selector", // css selector to find the article text
-  "authorSelector": "css selector" // css selector to find the author of the article
+  "authorSelector": "css selector", // css selector to find the author of the article
+  "titleSelector": "css selector" // css selector to find the title of the article
 }
 ```
 2. Add the site to the list of supported sites in [server/conf/sites.yaml](https://github.com/cbelsole/fakenewsdetector/tree/master/server/conf/sites.yaml)

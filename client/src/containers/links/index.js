@@ -13,7 +13,10 @@ export default class Links extends React.Component {
     return (
       <div>
         <p>{title}:</p>
-        {links.map((url, i) => <Link key={i} url={url} />)}
+        <table>
+          <thead />
+          <tbody>{links.map((url, i) => <Link key={i} url={url} />)}</tbody>
+        </table>
       </div>
     );
   }
