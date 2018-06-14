@@ -1,11 +1,4 @@
 export default {
-  corp: [
-    "nbcnews.com",
-    "cnbc.com",
-    "msnbc.com",
-    "nbcsports.com",
-    "nbcboston.com"
-  ],
   advertizer: [],
   ignore: ["instagram.com", "yahoo.com", "twitter.com", "facebook.com"],
   articleSelector: ".body___vDyiy p a",

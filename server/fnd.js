@@ -28,6 +28,11 @@ export default async (url, site) => {
 
         return anchors.reduce(
           (acc, anchor) => {
+            // filter mailto links
+            if (anchor.href.includes("mailto")) {
+              return acc;
+            }
+
             let url;
             try {
               url = new URL(anchor.href);

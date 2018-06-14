@@ -15,13 +15,10 @@ try {
 
 export const find = hostname => {
   let c;
-
   forEach(corporations, corporation => {
-    forEach(corporation.sites, (host, site) => {
-      if (host === hostname) {
-        c = corporation;
-      }
-    });
+    if (corporation.sites.includes(hostname)) {
+      c = corporation;
+    }
   });
 
   return c;

@@ -3,83 +3,87 @@ corporations:
     name: Turner Broadcasting System
     info: en.wikipedia.org/wiki/Turner_Broadcasting_System
     sites:
-      cnn: www.cnn.com
-      cnn_money: money.cnn.com
+      - www.cnn.com
+      - money.cnn.com
   news_corporation:
     name: News Corp
     info: en.wikipedia.org/wiki/News_Corporation
     sites:
-      fox_news: www.foxnews.com
-      fox_sports: www.foxsports.com
-      sky_news: news.sky.com
-      new_york_post: nypost.com
-      wall_street_journal: www.wsj.com
-      austrailian: www.theaustralian.com.au
-      sun: www.thesun.co.uk
-      times: www.thetimes.co.uk
+      - www.foxnews.com
+      - www.foxsports.com
+      - news.sky.com
+      - nypost.com
+      - www.wsj.com
+      - www.theaustralian.com.au
+      - www.thesun.co.uk
+      - www.thetimes.co.uk
   nbc_universal:
     name: NBC Universal
     info: en.wikipedia.org/wiki/NBCUniversal
     sites:
-      nbc_news: www.nbcnews.com
-      cnbc: www.cnbc.com
-      msnbc: www.msnbc.com
-      nbc_sports: www.nbcsports.com
-      nbc_boston: www.nbcboston.com
+      - www.nbcnews.com
+      - www.cnbc.com
+      - www.msnbc.com
+      - www.nbcboston.com
+      - www.nbcsports.com
+      - nhl.nbcsports.com
+      - profootballtalk.nbcsports.com
+      - nba.nbcsports.com
+      - soccer.nbcsports.com
   breitbart_news_network:
     name: Breitbart News Network
     info: en.wikipedia.org/wiki/Breitbart_News
     sites:
-      breitbart: www.breitbart.com
+      - www.breitbart.com
   new_york_times_company:
     name: New York Times Company
     info: en.wikipedia.org/wiki/The_New_York_Times_Company
     sites:
-      new_york_times: www.nytimes.com
+      - www.nytimes.com
   nash_holdings:
     name: Nash Holdings
     info: en.wikipedia.org/wiki/Jeff_Bezos#The_Washington_Post
     sites:
-      washington_post: www.washingtonpost.com
+      - www.washingtonpost.com
   oath_inc:
     name: Oath Inc.
     info: en.wikipedia.org/wiki/Oath_Inc.
     sites:
-      huffpost: www.huffingtonpost.com
+      - www.huffingtonpost.com
   buzzfeed_inc:
     name: Buzzfeed Inc.
     info: en.wikipedia.org/wiki/BuzzFeed
     sites:
-      buzzfeed: www.buzzfeed.com
+      - www.buzzfeed.com
   guardian_media_group:
     name: Guardian Media Group
     info: en.wikipedia.org/wiki/Guardian_Media_Group
     sites:
-      guardian: www.theguardian.com
+      - www.theguardian.com
   newsweek_daily_beast_company_llc:
     name: Newsweek Daily Beast Company LLC
     info: en.wikipedia.org/wiki/The_Newsweek_Daily_Beast_Company
     sites:
-      daily_beast: www.thedailybeast.com
-      newsweek: www.newsweek.com
+      - www.thedailybeast.com
+      - www.newsweek.com
   news_communications_inc:
     name: News Communications Inc.
     info: en.wikipedia.org/wiki/The_Hill_(newspaper)
     sites:
-      hill: thehill.com
-      dans_paper: www.danspapers.com
+      - thehill.com
+      - www.danspapers.com
   mercury_radio_arts:
     name: Mercury Radio Arts
     info: en.wikipedia.org/wiki/TheBlaze
     sites:
-      the_blaze: www.theblaze.com
+      - www.theblaze.com
   graham_holdings_company:
     name: Graham Holdings Company
     info: en.wikipedia.org/wiki/Graham_Holdings_Company
     sites:
-      slate: slate.com
+      - slate.com
   bloomberg_lp:
     name: Bloomberg LP
     info: en.wikipedia.org/wiki/Bloomberg_L.P.
     sites:
-      bloomberg: www.bloomberg.com
+      - www.bloomberg.com

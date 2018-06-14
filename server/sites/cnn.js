@@ -1,13 +1,4 @@
 export default {
-  corp: [
-    "cnn.com",
-    "bleacherreport.com",
-    "cnn.it",
-    "cnnnewsource.com",
-    "turner.com",
-    "turnerjobs.com",
-    "money.cnn.com"
-  ],
   advertizer: [
     "lendingtree.com",
     "truthfinder.com",

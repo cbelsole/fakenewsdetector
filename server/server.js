@@ -105,14 +105,16 @@ app.post("/api/articles", (req, res) => {
     );
   }
 
+  let resp = {};
+  const corporation = findCorporation(parsedURL.hostname);
+  if (corporation) {
+    resp = { ...resp, corporation };
+    site.corp = corporation.sites;
+  }
+
   fnd(url, site)
     .then(result => {
-      const corporation = findCorporation(parsedURL.hostname);
-      if (corporation) {
-        result.corporation = corporation;
-      }
-
-      return res.send(JSON.stringify(result));
+      return res.send(JSON.stringify({ ...resp, ...result }));
     })
     .catch(error => {
       res.statusCode = 500;

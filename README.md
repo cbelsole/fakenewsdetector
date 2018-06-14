@@ -14,12 +14,13 @@ Eventually, it will score articles on their sources to and provide some context 
 - [CNN](https://www.cnn.com/)
 - [CNN Money](money.cnn.com)
 - [NBC News](https://www.nbcnews.com/)
+- [NBC Sports](https://www.nbcsports.com/)
 - [CNBC](https://www.cnbc.com/)
+- [MSNBC](http://www.msnbc.com/)
 
 ## Unsupported Sites (PRs wanted)
 
 - [Fox News](http://www.foxnews.com/)
-- [MSNBC](http://www.msnbc.com/)
 - [Breitbart](http://www.breitbart.com/)
 - [New York Times](https://www.nytimes.com/)
 - [Washington Post](https://www.washingtonpost.com/)

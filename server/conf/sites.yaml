@@ -5,6 +5,13 @@ sites:
   www.nbcnews.com: nbc_news
   www.cnbc.com: cnbc
   www.msnbc.com: msnbc
+  # There are probabably more here.
+  # These are just the ones I found on a first pass
+  www.nbcsports.com: nbc_sports
+  nhl.nbcsports.com: nbc_sports
+  profootballtalk.nbcsports.com: nbc_sports
+  nba.nbcsports.com: nbc_sports
+  soccer.nbcsports.com: nbc_sports
 
 # unsupported
 # www.foxnews.com: fox_news
@@ -15,7 +22,6 @@ sites:
 # www.theaustralian.com.au: austrailian
 # www.thesun.co.uk: sun
 # www.thetimes.co.uk: times
-# www.nbcsports.com: nbc_sports
 # www.nbcboston.com: nbc_boston
 # www.breitbart.com: breitbart
 # www.nytimes.com: new_york_times
