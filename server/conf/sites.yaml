@@ -12,6 +12,7 @@ sites:
   profootballtalk.nbcsports.com: nbc_sports
   nba.nbcsports.com: nbc_sports
   soccer.nbcsports.com: nbc_sports
+  olympics.nbcsports.com: nbc_sports
 
 # unsupported
 # www.foxnews.com: fox_news

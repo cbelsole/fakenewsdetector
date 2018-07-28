@@ -23,22 +23,5 @@ export default {
   articleSelector: "#storytext p a:not(:has(span))",
   skipArticle: [".inStoryHeading"],
   authorSelectors: [".byline"],
-  titleSelector: ".article-title",
-  authorCleanup: function(author) {
-    const re = /by (\w+( \w*))( and (\w+( \w*)))?/;
-    let authors = re.exec(author);
-    // remove nulls
-    authors = authors.reduce((accum, author) => {
-      if (author) {
-        accum.push(author);
-      }
-      return accum;
-    }, []);
-
-    if (authors.length > 3) {
-      return [authors[1], authors[4]];
-    } else {
-      return [authors[1]];
-    }
-  }
+  titleSelector: ".article-title"
 };

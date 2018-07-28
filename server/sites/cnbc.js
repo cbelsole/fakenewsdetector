@@ -4,11 +4,5 @@ export default {
   articleSelector: 'div[itemprop="articleBody"] a',
   // this is likely not sustainable as the css is probably dynamic
   authorSelectors: ['div[itemprop="author"] a', 'div[itemprop="author"] span'],
-  authorCleanup: authorCleanup,
   titleSelector: ".title"
-};
-
-const authorCleanup = function(element) {
-  remove = new RegExp(/^By (.*), CNN/);
-  return author.replace(remove, "$1");
 };

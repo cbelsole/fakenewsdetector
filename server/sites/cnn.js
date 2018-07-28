@@ -21,6 +21,6 @@ export default {
   ],
   ignore: ["instagram.com", "yahoo.com", "twitter.com", "facebook.com"],
   articleSelector: 'div[itemprop="articleBody"] a',
-  authorSelectors: [".metadata__byline__author a", ".metadata__byline__author"],
+  authorSelectors: ".metadata__byline__author",
   titleSelector: ".pg-headline"
 };

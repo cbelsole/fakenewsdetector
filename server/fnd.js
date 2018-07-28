@@ -93,36 +93,29 @@ export default async (url, site) => {
     let authors = await page
       .evaluate(site => {
         if (!site.authorSelectors) {
-          return [];
+          return "";
         }
 
-        let authors = site.authorSelectors.reduce((acc, selector) => {
-          let element = document.querySelector(selector);
+        let element = document.querySelector(site.authorSelectors);
+        if (element !== null) {
+          return element.textContent;
+        }
 
-          if (element !== null) {
-            const authorText = element.textContent;
-            if (site.authorCleanup) {
-              acc = acc.concat(acc, site.authorCleanup(authorText));
-            } else {
-              acc.push(authorText);
-            }
-          }
-
-          return acc;
-        }, []);
-
-        return authors;
+        return "";
       }, site)
       .catch(error => {
         console.error(error);
 
-        return [];
+        return "";
       });
 
-    if (site.authorCleanup) {
-      authors = authors.map(author => site.authorCleanup(author));
-      authors = authors.flatten();
-    }
+    authors = authors.split(/[Bb]y|,|and|\//).reduce((acc, author) => {
+      let a = author.trim();
+      if (a && a.toLowerCase() !== "cnn") {
+        acc.push(author);
+      }
+      return acc;
+    }, []);
 
     let title = await page
       .evaluate(site => {
