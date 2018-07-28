@@ -55,7 +55,7 @@ class Home extends Component {
               </p>
             );
           } else {
-            accum = accum.push(
+            accum.push(
               <p key={author}>
                 <a href={url} target="_blank">
                   {author}
